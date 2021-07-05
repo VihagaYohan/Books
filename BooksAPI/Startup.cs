@@ -1,4 +1,5 @@
 using BooksAPI.Data;
+using BooksAPI.Data.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -37,6 +38,9 @@ namespace BooksAPI
 			{
 				c.SwaggerDoc("v1", new OpenApiInfo { Title = "BooksAPI", Version = "v1" });
 			});
+
+			// configure services
+			services.AddTransient<BooksService>();
 		}
 
 		// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
