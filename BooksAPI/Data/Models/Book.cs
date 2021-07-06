@@ -22,5 +22,6 @@ namespace BooksAPI.Models
 		// navigation properties
 		public int PublisherId { get; set; }
 		public Publisher Publisher { get; set; }
+		public IEnumerable<Book_Author> Book_Authors { get; set; }
 	}
 }

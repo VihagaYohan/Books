@@ -28,7 +28,8 @@ namespace BooksAPI.Data
 						Genre = "Biography",
 						Author ="First author",
 						CoverUrl ="first book link",
-						DateAdded=DateTime.Now
+						DateAdded=DateTime.Now,
+						PublisherId=1
 					}) ;
 					books.Add(new Book()
 					{
@@ -38,7 +39,8 @@ namespace BooksAPI.Data
 						Genre = "Biography",
 						Author = "first author",
 						CoverUrl = "second book link",
-						DateAdded = DateTime.Now
+						DateAdded = DateTime.Now,
+						PublisherId=1
 					});
 
 					context.Books.AddRange(books);
