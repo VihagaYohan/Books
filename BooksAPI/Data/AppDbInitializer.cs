@@ -26,7 +26,7 @@ namespace BooksAPI.Data
 						DateRead = DateTime.Now.AddDays(-10),
 						Rate = 4,
 						Genre = "Biography",
-						Author ="First author",
+						//Author ="First author",
 						CoverUrl ="first book link",
 						DateAdded=DateTime.Now,
 						PublisherId=1
@@ -37,7 +37,7 @@ namespace BooksAPI.Data
 						Description = "2nd book description",
 						IsRead = false,
 						Genre = "Biography",
-						Author = "first author",
+						//Author = "first author",
 						CoverUrl = "second book link",
 						DateAdded = DateTime.Now,
 						PublisherId=1

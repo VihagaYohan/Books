@@ -42,6 +42,7 @@ namespace BooksAPI
 			// configure services
 			services.AddTransient<BooksService>();
 			services.AddTransient<PublishersService>();
+			services.AddTransient<AuthorsService>();
 		}
 
 		// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -64,7 +65,7 @@ namespace BooksAPI
 			{
 				endpoints.MapControllers();
 			});
-			AppDbInitializer.Seed(app); // seeding database with data
+			//AppDbInitializer.Seed(app); // seeding database with data
 		}
 	}
 }

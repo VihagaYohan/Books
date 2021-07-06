@@ -1,4 +1,5 @@
 ﻿using BooksAPI.Data.Models;
+using BooksAPI.Data.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,5 +21,16 @@ namespace BooksAPI.Data.Services
 		//{
 		//	return;
 		//}
+
+		// add new publisher
+		public void AddPublisher(PublisherVM publisher) 
+		{
+			var _publisher = new Publisher()
+			{
+				Name = publisher.Name
+			};
+			_context.Publishers.Add(_publisher);
+			_context.SaveChanges();
+		}
 	}
 }
