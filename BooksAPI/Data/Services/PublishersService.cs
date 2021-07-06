@@ -43,5 +43,16 @@ namespace BooksAPI.Data.Services
 			_context.Publishers.Add(_publisher);
 			_context.SaveChanges();
 		}
+
+		// delete publisher with related data
+		public void DeletePublisherById(int id)
+		{
+			var _publisher = _context.Publishers.FirstOrDefault(n => n.Id == id);
+			if (_publisher != null) 
+			{
+				_context.Publishers.Remove(_publisher);
+				_context.SaveChanges();
+			}
+		}
 	}
 }
