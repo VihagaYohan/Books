@@ -22,10 +22,22 @@ namespace BooksAPI.Data.Services
 			return books;
 		}
 
-		public Book GetBookById(int id) 
+		public BookWithAuthorsVM GetBookById(int id) 
 		{
-			var book = _context.Books.FirstOrDefault(b => b.Id == id);
-			return book;
+			var bookWithAuthors = _context.Books.Where(n => n.Id == id).Select(book => new BookWithAuthorsVM()
+			{
+				Title = book.Title,
+				Description = book.Description,
+				IsRead = book.IsRead,
+				DateRead = book.IsRead ? book.DateRead.Value : null,
+				Rate = book.IsRead ? book.Rate.Value : null,
+				Genre = book.Genre,
+				//Author = book.Author,
+				CoverUrl = book.CoverUrl,
+				PublisherName = book.Publisher.Name,
+				AuthorNames = book.Book_Authors.Select(n => n.Author.FullName).ToList()
+			}).FirstOrDefault();
+			return bookWithAuthors;
 		}
 
 		public void AddBookWithAuthor(BookVM book) 
