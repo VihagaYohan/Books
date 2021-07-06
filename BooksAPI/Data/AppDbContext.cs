@@ -1,4 +1,5 @@
-﻿using BooksAPI.Models;
+﻿using BooksAPI.Data.Models;
+using BooksAPI.Models;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -15,5 +16,6 @@ namespace BooksAPI.Data
 		}
 
 		public DbSet<Book> Books { get; set; }
+		public DbSet<Publisher> Publishers { get; set; }
 	}
 }
