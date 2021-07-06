@@ -17,10 +17,21 @@ namespace BooksAPI.Data.Services
 		}
 
 		// get all publishers
-		//public IEnumerable<Publisher> GetAllPublishers() 
-		//{
-		//	return;
-		//}
+		public PublisherWithBooksAndAuthorsVM GetPublisherData(int publisherId)
+		{
+			var _publisherData = _context.Publishers.Where(n => n.Id == publisherId)
+				.Select(n => new PublisherWithBooksAndAuthorsVM()
+				{
+					PublisherName = n.Name,
+					BookAuthors = n.Books.Select(n => new BookAuthorVM()
+					{
+						BookName = n.Title,
+						BookAuthors = n.Book_Authors.Select(n => n.Author.FullName).ToList()
+					}).ToList()
+				}).FirstOrDefault();
+
+			return _publisherData;
+		}
 
 		// add new publisher
 		public void AddPublisher(PublisherVM publisher) 
