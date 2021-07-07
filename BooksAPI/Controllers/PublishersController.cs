@@ -40,15 +40,31 @@ namespace BooksAPI.Controllers
 		[HttpPost("add-publisher")]
 		public IActionResult AddPublisher([FromBody]PublisherVM publisher) 
 		{
-			var newPublisher = _service.AddPublisher(publisher);
-			return Created(nameof(AddPublisher),newPublisher);
+			try
+			{
+				var newPublisher = _service.AddPublisher(publisher);
+				return Created(nameof(AddPublisher),newPublisher);
+			}
+			catch (Exception ex)
+			{
+				return BadRequest(ex.Message);
+			}
+			
 		}
 
 		[HttpDelete("delete-publisher-by-id/{id}")]
 		public IActionResult DeletePublisherById(int id) 
 		{
-			_service.DeletePublisherById(id);
-			return Ok();
+			try
+			{
+				_service.DeletePublisherById(id);
+				return Ok();
+			}
+			catch (Exception ex)
+			{
+				return BadRequest(ex.Message);
+			}
+			
 		}
 	}
 }
