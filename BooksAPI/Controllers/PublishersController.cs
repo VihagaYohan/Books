@@ -26,11 +26,22 @@ namespace BooksAPI.Controllers
 			return Ok(result);
 		}
 
+		[HttpGet("get-publisher-by-id/{id}")]
+		public IActionResult GetPublisherById(int id)
+		{
+			var result = _service.GetPublisherById(id);
+			if (result != null) 
+			{
+				return Ok(result);
+			}
+			return NotFound();
+		}
+
 		[HttpPost("add-publisher")]
 		public IActionResult AddPublisher([FromBody]PublisherVM publisher) 
 		{
-			_service.AddPublisher(publisher);
-			return Ok();
+			var newPublisher = _service.AddPublisher(publisher);
+			return Created(nameof(AddPublisher),newPublisher);
 		}
 
 		[HttpDelete("delete-publisher-by-id/{id}")]

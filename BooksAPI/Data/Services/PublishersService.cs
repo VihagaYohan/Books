@@ -33,8 +33,15 @@ namespace BooksAPI.Data.Services
 			return _publisherData;
 		}
 
+		// get publisher by ID
+		public Publisher GetPublisherById(int id) 
+		{
+			var publisher = _context.Publishers.FirstOrDefault(n => n.Id == id);
+			return publisher;
+		}
+
 		// add new publisher
-		public void AddPublisher(PublisherVM publisher) 
+		public Publisher AddPublisher(PublisherVM publisher) 
 		{
 			var _publisher = new Publisher()
 			{
@@ -42,6 +49,8 @@ namespace BooksAPI.Data.Services
 			};
 			_context.Publishers.Add(_publisher);
 			_context.SaveChanges();
+
+			return _publisher;
 		}
 
 		// delete publisher with related data
