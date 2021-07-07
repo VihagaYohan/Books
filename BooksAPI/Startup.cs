@@ -63,7 +63,8 @@ namespace BooksAPI
 			app.UseAuthorization();
 
 			// Exception handling
-			app.ConfigureBuildInExceptionHandler();
+			//app.ConfigureBuildInExceptionHandler();
+			app.ConfigureCustomExceptionHandler();
 
 			app.UseEndpoints(endpoints =>
 			{
