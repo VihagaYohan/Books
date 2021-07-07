@@ -1,5 +1,6 @@
 ﻿using BooksAPI.Data.Services;
 using BooksAPI.Data.ViewModels;
+using BooksAPI.Exceptions;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -43,7 +44,11 @@ namespace BooksAPI.Controllers
 			try
 			{
 				var newPublisher = _service.AddPublisher(publisher);
-				return Created(nameof(AddPublisher),newPublisher);
+				return Created(nameof(AddPublisher), newPublisher);
+			}
+			catch (PublishernameException ex) 
+			{
+				return BadRequest($"{ex.Message}, Publisher name: ${ex.PublisherName}");
 			}
 			catch (Exception ex)
 			{
