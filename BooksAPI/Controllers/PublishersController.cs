@@ -41,6 +41,7 @@ namespace BooksAPI.Controllers
 		[HttpPost("add-publisher")]
 		public IActionResult AddPublisher([FromBody]PublisherVM publisher) 
 		{
+			throw new Exception("This is an exception that will be handeled by middleware");
 			try
 			{
 				var newPublisher = _service.AddPublisher(publisher);
